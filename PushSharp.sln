@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushSharp.Core", "PushSharp.Core\PushSharp.Core.csproj", "{2B44A8DA-60BC-4577-A2D7-D9D53F164B2E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushSharp.Tests", "PushSharp.Tests\PushSharp.Tests.csproj", "{989B7357-800E-46B9-91AF-A4CE8A55F389}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{2B7243CB-60A5-4682-802B-B7EC3DEBCF9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushSharp.Apple", "PushSharp.Apple\PushSharp.Apple.csproj", "{A9D99F80-FEEB-4E74-96C5-66F17103C773}"
@@ -19,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2B44A8DA-60BC-4577-A2D7-D9D53F164B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B44A8DA-60BC-4577-A2D7-D9D53F164B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B44A8DA-60BC-4577-A2D7-D9D53F164B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B44A8DA-60BC-4577-A2D7-D9D53F164B2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{989B7357-800E-46B9-91AF-A4CE8A55F389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{989B7357-800E-46B9-91AF-A4CE8A55F389}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{989B7357-800E-46B9-91AF-A4CE8A55F389}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{989B7357-800E-46B9-91AF-A4CE8A55F389}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9D99F80-FEEB-4E74-96C5-66F17103C773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9D99F80-FEEB-4E74-96C5-66F17103C773}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D99F80-FEEB-4E74-96C5-66F17103C773}.Release|Any CPU.ActiveCfg = Release|Any CPU

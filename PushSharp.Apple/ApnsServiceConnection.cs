@@ -1,5 +1,4 @@
 ﻿using System;
-using PushSharp.Core;
 using System.Threading.Tasks;
 
 namespace PushSharp.Apple

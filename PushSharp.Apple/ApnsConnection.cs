@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 using System.Threading;
 using System.Net;
-using PushSharp.Core;
+using Nito.AsyncEx;
 
 namespace PushSharp.Apple
 {
@@ -68,9 +68,8 @@ namespace PushSharp.Apple
         byte[] buffer = new byte[6];
         int id;
 
-
-        SemaphoreSlim connectingSemaphore = new SemaphoreSlim (1);
-        SemaphoreSlim batchSendSemaphore = new SemaphoreSlim (1);
+        AsyncSemaphore connectingSemaphore = new AsyncSemaphore(1);
+        AsyncSemaphore batchSendSemaphore = new AsyncSemaphore(1);
         object notificationBatchQueueLock = new object ();
 
         //readonly object connectingLock = new object ();
@@ -98,7 +97,7 @@ namespace PushSharp.Apple
                 //  if the timer is actually called, it means no more notifications were queued, 
                 //  so we should flush out the queue instead of waiting for more to be batched as they
                 //  might not ever come and we don't want to leave anything stranded in the queue
-                timerBatchWait.Change (Configuration.InternalBatchingWaitPeriod, Timeout.InfiniteTimeSpan);
+                timerBatchWait.Change (Configuration.InternalBatchingWaitPeriod, new TimeSpan(0, 0, 0, 0, -1));
             }
         }
 
@@ -174,7 +173,7 @@ namespace PushSharp.Apple
             Log.Info ("APNS-Client[{0}]: Done Reading for Batch ID={1}, reseting batch timer...", id, batchId);
 
             // Restart the timer for the next batch
-            timerBatchWait.Change (Configuration.InternalBatchingWaitPeriod, Timeout.InfiniteTimeSpan);
+            timerBatchWait.Change (Configuration.InternalBatchingWaitPeriod, new TimeSpan(0, 0, 0, 0, -1));
         }
 
         byte[] createBatch (List<CompletableApnsNotification> toSend)
@@ -214,7 +213,7 @@ namespace PushSharp.Apple
                 }
 
                 // Let's not tie up too much CPU waiting...
-                await Task.Delay (50).ConfigureAwait (false);
+                await TaskEx.Delay (50).ConfigureAwait (false);
             }
 
             Log.Info ("APNS-Client[{0}]: Received {1} bytes response...", id, len);
